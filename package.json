@@ -1,0 +1,45 @@
+{
+  "name": "ithome2019ironman",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:client": "vue-cli-service service --mode dev",
+    "dev:ssr": "cross-env BUILD_TARGET=node NODE_ENV=dev node ./server",
+    "dev:all": "concurrently \"vue-cli-service serve --mode dev --port 8081\" \"npm run dev:ssr\"",
+    "serve": "cross-env NODE_DEPLOY=dev npm run dev:all",
+    "build:client": "NODE_ENV=production vue-cli-service build",
+    "build:ssr": "cross-env BUILD_TARGET=node NODE_ENV=production vue-cli-service build --no-clean",
+    "build:all": "npm run build:client && cross-env NODE_PORT=8080 npm run build:ssr",
+    "build": "cross-env NODE_DEPLOY=prod npm run build:all",
+    "lint": "vue-cli-service lint",
+    "dist": "cross-env NODE_DEPLOY=dist NODE_ENV=production node ./dist/server"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "koa": "^2.8.1",
+    "koa-cookie": "^1.0.0",
+    "koa-favicon": "^2.0.1",
+    "koa-mount": "^4.0.0",
+    "koa-static": "^5.0.0",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "@vue/eslint-config-prettier": "^5.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "prettier": "^1.18.2",
+    "sass": "^1.18.0",
+    "sass-loader": "^7.1.0",
+    "vue-server-renderer": "^2.6.10",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.40.2",
+    "webpack-node-externals": "^1.7.2"
+  }
+}

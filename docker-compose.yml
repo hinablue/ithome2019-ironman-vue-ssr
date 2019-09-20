@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+    ironmanapp:
+        image: hina/ironman2019app:1.0
+        build: .
+        command: npm run serve
+        volumes:
+          - ./:/usr/app/
+          - /usr/app/node_modules
+        ports:
+          - "8081:8081"
+          - "8080:8080"
+        environment:
+          - NODE_ENV=development
